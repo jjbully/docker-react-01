@@ -1,8 +1,11 @@
 version: '3'
 services:
   web:
+    # we need this because of the bug in create-react-app
     stdin_open: true
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports: 
       - "3000:3000"
     volumes:
@@ -17,3 +20,6 @@ services:
 
 # 0676 - Shorthand with Docker Compose
 ## docker-compose up              # not working, because of customer docker file name, i.e. Dockerfile.dev
+
+# 0677 - Overriding DockerFile selection
+## docker-compose up              # working this time
