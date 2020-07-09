@@ -44,3 +44,11 @@ services:
 
 # 0682 - create a new service for testing
 ## docker-compose up --build 
+
+
+# 0684 - shortcomings on testing
+# on new terminal
+## docker attach CONTAINER_ID                       # not working, beause it only attach to the primary 
+                                                    # process
+
+# then test the option on terminal - (not working)
