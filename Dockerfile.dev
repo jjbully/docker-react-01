@@ -33,3 +33,9 @@ CMD ["npm", "run", "start"]
 ## docker run CONTAINER_ID                        ## not working coz need to map the port
 ## docker run -p 3000:3000 CONTAINER_ID           ## not working too coz the recent change in create react app
 ## docker run -it -p 3000:3000 CONTAINER_ID       ## WORKING - start the container
+
+# 0672-0674 Docker Volume
+## docker run -it -p 3000:3000 -v $(pwd):/app caf6c2e35b4f      ## app folder in the container reference to the pwd in the host
+                                                                ## Not working coz there is no node_module in the host so there is no node_module after referencing
+## docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app caf6c2e35b4f
+### -v /app/node_modules --> without ":" this directory doesnt have reference, this directory is a placeholder
