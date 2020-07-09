@@ -12,6 +12,18 @@ services:
       # bookmark a folder and not to reference it to any folder in host (outside the container)
       - /app/node_modules
       - .:/app
+  tests:
+    # we need this because of the bug in create-react-app
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      # bookmark a folder and not to reference it to any folder in host (outside the container)
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
+
 
 
 
@@ -28,3 +40,7 @@ services:
 # 0681 - live updating tests - run test inside the container in which the reference are all set up
 # start a docker container from a compose file and then exec command inside that container
 ## docker exec -it CONTAINER_ID(docker compose, not docker file) npm run test 
+
+
+# 0682 - create a new service for testing
+## docker-compose up --build 
