@@ -8,6 +8,8 @@ COPY package.json .
 RUN npm install
 
 # copy everything to the working directory
+# we dont need it because in the docker-compose file, we reference the app foler in the container to the host folder
+# but we keep it because we may use this file without docker-compose or we reuse this file in other places
 COPY . .
 
 CMD ["npm", "run", "start"]
