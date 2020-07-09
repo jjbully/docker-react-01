@@ -22,8 +22,14 @@ CMD ["npm", "run", "start"]
 # command ------------------------------------
 # --------------------------------------------
 
+# 0668 - Creating the Dev Dockerfile
+## docker build .                        ## we cant use this for docker file withd custom name, e.g. Dockerfile.dev (instead of Dockerfile)
+## docker build -f Dockerfile.dev .      ## build docker image, -f => specify the name of hte docker file
 
-# docker build .                        ## we cant use this for docker file withd custom name, e.g. Dockerfile.dev (instead of Dockerfile)
-# docker build -f Dockerfile.dev .      ## build docker image, -f => specify the name of hte docker file
-
+# 0669 - Duplicating  Dependencies
 ## remove node_modules coz the dependency will be install in the Docker image
+
+# 0671 Starting the container
+## docker run CONTAINER_ID                        ## not working coz need to map the port
+## docker run -p 3000:3000 CONTAINER_ID           ## not working too coz the recent change in create react app
+## docker run -it -p 3000:3000 CONTAINER_ID       ## WORKING - start the container
