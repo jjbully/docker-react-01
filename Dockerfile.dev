@@ -41,3 +41,9 @@ CMD ["npm", "run", "start"]
                                                                 ## Not working coz there is no node_module in the host so there is no node_module after referencing
 ## docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app caf6c2e35b4f
 ### -v /app/node_modules --> without ":" this directory doesnt have reference, this directory is a placeholder
+
+
+# 0680 Executing Tests
+## docker build -f Dockerfile.dev .                 ## build an image
+## docker run COMTAINER_ID npm run test             ## NOT WORKING - run test 
+## docker run -it CONTAILER_ID npm run test         ## Successful - run test, enable input to the process 
