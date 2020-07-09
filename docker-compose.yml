@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    stdin_open: true
+    build: .
+    ports: 
+      - "3000:3000"
+    volumes:
+      # bookmark a folder and not to reference it to any folder in host (outside the container)
+      - /app/node_modules
+      - .:/app
+
+
+
+## Command ------------------------------------------
+## --------------------------------------------------
+
+# 0676 - Shorthand with Docker Compose
+## docker-compose up              # not working, because of customer docker file name, i.e. Dockerfile.dev
