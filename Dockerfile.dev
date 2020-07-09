@@ -4,7 +4,7 @@ FROM node:alpine
 WORKDIR '/app'                            
 
 # the package.json to working directory
-COPY package.json .    
+COPY package.json . 
 RUN npm install
 
 # copy everything to the working directory
@@ -25,3 +25,5 @@ CMD ["npm", "run", "start"]
 
 # docker build .                        ## we cant use this for docker file withd custom name, e.g. Dockerfile.dev (instead of Dockerfile)
 # docker build -f Dockerfile.dev .      ## build docker image, -f => specify the name of hte docker file
+
+## remove node_modules coz the dependency will be install in the Docker image
