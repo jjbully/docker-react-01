@@ -1,0 +1,10 @@
+# need super user permission to run the code
+sudo: required
+services:
+  - docker
+
+before_install:
+  # build docker image with tag, spedifying file name and context
+  - docker build -t jjbully/docker-react-01 -f Dockerfile.dev .
+
+  
