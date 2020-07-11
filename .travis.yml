@@ -18,7 +18,7 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
-  app: "docker-react-01"
+  app: "docker-react-01" 
   env: "DockerReact01-env"
   bucket_name: "elasticbeanstalk-us-east-1-720725084613"
   # same name as app if havent deployed before
@@ -26,6 +26,9 @@ deploy:
   on:
     # deploy when branch master updated
     branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  
 
 
 ## Command ---------------------------------------------------------------------
