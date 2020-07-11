@@ -1,7 +1,6 @@
-# tag as "builder" phrase
-FROM node:alpine as builder
+FROM node:alpine
 WORKDIR '/app'
-COPY package.json .
+COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
@@ -12,7 +11,7 @@ FROM nginx
 # expose the port in AWS to outside docker container, just like docker run -p 3000:3000 CONTAINER_ID 
 EXPOSE 80
 # copy things from builder phrase to a new directory
-COPY --from=builder /app/build /usr/share/nginx/html 
+COPY --from=0 /app/build /usr/share/nginx/html 
 
 # no need for setting the cmd coz the default command of nginx image is to start the nginx server
 
