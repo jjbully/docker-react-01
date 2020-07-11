@@ -1,5 +1,8 @@
+language: generic
+
 # need super user permission to run the code
 sudo: required
+
 services:
   - docker
 
@@ -7,4 +10,27 @@ before_install:
   # build docker image with tag, spedifying file name and context
   - docker build -t jjbully/docker-react-01 -f Dockerfile.dev .
 
-  
+script: 
+  # this one is outdated
+  # - docker run jjbully/docker-react-01 npm run test -- --coverage 
+  - docker run -e CI=true jjbully/docker-react-01 npm run test
+
+
+## Command ---------------------------------------------------------------------
+## -----------------------------------------------------------------------------
+
+# 07094 - a touch more Travis Setup
+## run a test to see the terminal feedback 
+### docker run IMAGE_ID npm run test
+
+# test more 
+## docker run IMAGE_ID npm run test -- --coverage
+
+
+
+## Link -----------------------------------------------------------------------
+# You can read up on the CI=true variable here:
+# https://facebook.github.io/create-react-app/docs/running-tests#linux-macos-bash
+
+# enviornment variables in Docker
+# https://docs.docker.com/engine/reference/run/#env-environment-variables
