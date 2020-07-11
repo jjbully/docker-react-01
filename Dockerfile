@@ -6,8 +6,11 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# another phrase
+# another phrase ---------------------------------------
+# ------------------------------------------------------
 FROM nginx
+# expose the port in AWS to outside docker container, just like docker run -p 3000:3000 CONTAINER_ID 
+EXPOSE 80
 # copy things from builder phrase to a new directory
 COPY --from=builder /app/build /usr/share/nginx/html 
 
