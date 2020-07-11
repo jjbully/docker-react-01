@@ -11,9 +11,21 @@ before_install:
   - docker build -t jjbully/docker-react-01 -f Dockerfile.dev .
 
 script: 
-  # this one is outdated
-  # - docker run jjbully/docker-react-01 npm run test -- --coverage 
+  # run a test before deploying
+  # outdated code: - docker run jjbully/docker-react-01 npm run test -- --coverage 
   - docker run -e CI=true jjbully/docker-react-01 npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react-01"
+  env: "DockerReact01-env"
+  bucket_name: "elasticbeanstalk-us-east-1-720725084613"
+  # same name as app if havent deployed before
+  bucket_path: "docker-react-01"
+  on:
+    # deploy when branch master updated
+    branch: master
 
 
 ## Command ---------------------------------------------------------------------
